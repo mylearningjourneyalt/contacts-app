@@ -1,14 +1,14 @@
 <div class="content">
   <h1 class="header">Edit Contact</h1>
-  <form>
+  <form [formGroup]="contactForm" (ngSubmit)="saveContact()">
     <section>
       <nav>Name/Info</nav>
       <div>
-        <input [formControl]="firstName" placeholder="First Name" />
-        <input [formControl]="lastName" placeholder="Last Name" />
-        <input [formControl]="dateOfBirth" placeholder="Date of Birth" />
+        <input formControlName="firstName" placeholder="First Name" />
+        <input formControlName="lastName" placeholder="Last Name" />
+        <input formControlName="dateOfBirth" placeholder="Date of Birth" />
         <input
-          [formControl]="favoritesRanking"
+          formControlName="favoritesRanking"
           placeholder="Favorites Ranking"
         />
       </div>
@@ -46,9 +46,9 @@
         </div>
       </div>
     </section>
+    <div class="buttons">
+      <button class="secondary">Cancel</button>
+      <button class="primary" (click)="saveContact()">Save</button>
+    </div>
   </form>
-  <div class="buttons">
-    <button class="secondary">Cancel</button>
-    <button class="primary" (click)="saveContact()">Save</button>
-  </div>
 </div>
