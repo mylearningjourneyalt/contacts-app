@@ -1,10 +1,14 @@
 import { Component, inject, OnInit } from '@angular/core';
-import { FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms';
+import {
+  FormControl,
+  FormGroup,
+  FormBuilder,
+  Validators,
+} from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ContactsService } from '../contacts/contacts.service';
 import { last, noop } from 'rxjs';
 import { addressTypeValues, phoneTypeValues } from '../contacts/contact.model';
-
 
 @Component({
   templateUrl: './edit-contact.component.html',
@@ -19,7 +23,7 @@ export class EditContactComponent implements OnInit {
   contactForm = this.formBuilder.nonNullable.group({
     id: '',
     personal: false,
-    firstName: ['', Validators.required],
+    firstName: ['', [Validators.required, Validators.minLength(1)]],
     lastName: '',
     dateOfBirth: <Date | null>null,
     favoritesRanking: <number | null>null,
