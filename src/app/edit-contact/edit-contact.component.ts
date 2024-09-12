@@ -2,6 +2,7 @@ import { Component, inject, OnInit } from '@angular/core';
 import { FormControl, FormGroup, FormBuilder } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ContactsService } from '../contacts/contacts.service';
+import { last } from 'rxjs';
 
 @Component({
   templateUrl: './edit-contact.component.html',
@@ -40,7 +41,11 @@ export class EditContactComponent implements OnInit {
 
     this.contactsService.getContact(contactId).subscribe((contact) => {
       if (!contact) return;
-
+      const patchValues = {
+        firstName: contact.firstName,
+        lastName: contact.lastName,
+      };
+      this.contactForm.patchValue(patchValues);
       this.contactForm.setValue(contact);
     });
   }
