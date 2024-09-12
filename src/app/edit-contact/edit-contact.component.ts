@@ -2,7 +2,7 @@ import { Component, inject, OnInit } from '@angular/core';
 import { FormControl, FormGroup, FormBuilder } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ContactsService } from '../contacts/contacts.service';
-import { last } from 'rxjs';
+import { last, noop } from 'rxjs';
 import { addressTypeValues, phoneTypeValues } from '../contacts/contact.model';
 
 
@@ -36,6 +36,7 @@ export class EditContactComponent implements OnInit {
       postalCode: '',
       addressType: '',
     }),
+    notes: '',
   });
 
   constructor(private route: ActivatedRoute) {}
