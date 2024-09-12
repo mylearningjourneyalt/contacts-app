@@ -21,7 +21,7 @@ export class EditContactComponent implements OnInit {
     personal: false,
     firstName: '',
     lastName: '',
-    dateOfBirth: <Date | null>null,
+    dateOfBirth: '',
     favoritesRanking: <number | null>null,
 
     phone: this.formBuilder.nonNullable.group({
