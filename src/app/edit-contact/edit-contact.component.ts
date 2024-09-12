@@ -64,6 +64,7 @@ export class EditContactComponent implements OnInit {
     return this.contactForm.controls.firstName;
   }
 
+
   saveContact() {
     //getRawValue() always returns a value even if a formcontrol is disabled
     //instead of using this.formGroup.value

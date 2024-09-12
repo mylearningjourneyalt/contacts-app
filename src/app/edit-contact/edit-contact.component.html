@@ -4,12 +4,12 @@
     <section>
       <nav>Name/Info</nav>
       <div>
-        <input formControlName="firstName" placeholder="First Name" />
-        <em
-          *ngIf="
-            firstName.invalid &&
-            firstName.touched
-          "
+        <input
+          formControlName="firstName"
+          placeholder="First Name"
+          [class.error]="firstName.invalid && firstName.touched"
+        />
+        <em *ngIf="firstName.invalid && firstName.touched"
           >Please enter a First Name</em
         >
         <input formControlName="lastName" placeholder="Last Name" />
