@@ -16,6 +16,19 @@ export class EditContactComponent implements OnInit {
     lastName: new FormControl(),
     dateOfBirth: new FormControl(),
     favoritesRanking: new FormControl(),
+
+    phone: new FormGroup({
+      phoneNumber: new FormControl(),
+      phoneType: new FormControl(),
+    }),
+
+    address: new FormGroup({
+      streetAddress: new FormControl(),
+      city: new FormControl(),
+      state: new FormControl(),
+      postalCode: new FormControl(),
+      addressType: new FormControl(),
+    }),
   });
 
   constructor(private route: ActivatedRoute) {}
@@ -26,19 +39,20 @@ export class EditContactComponent implements OnInit {
 
     this.contactsService.getContact(contactId).subscribe((contact) => {
       if (!contact) return;
-      this.contactForm.controls.id.setValue(contact.id);  
+      this.contactForm.controls.id.setValue(contact.id);
       this.contactForm.controls.firstName.setValue(contact.firstName);
       this.contactForm.controls.lastName.setValue(contact.lastName);
       this.contactForm.controls.dateOfBirth.setValue(contact.dateOfBirth);
-      this.contactForm.controls.favoritesRanking.setValue(contact.favoritesRanking);
+      this.contactForm.controls.favoritesRanking.setValue(
+        contact.favoritesRanking
+      );
     });
   }
-
 
   saveContact() {
     //getRawValue() always returns a value even if a formcontrol is disabled
     //instead of using this.formGroup.value
-    this.contactsService.saveContact(this.contactForm.value).subscribe({
+    this.contactsService.saveContact(this.contactForm.getRawValue()).subscribe({
       next: () => this.router.navigate(['contacts']),
     });
     console.log(this.contactForm.value);
