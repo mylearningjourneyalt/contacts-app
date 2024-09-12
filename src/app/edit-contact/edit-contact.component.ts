@@ -11,6 +11,7 @@ export class EditContactComponent implements OnInit {
   private contactsService = inject(ContactsService);
   private router = inject(Router);
   contactForm = new FormGroup({
+    id: new FormControl(),
     firstName: new FormControl(),
     lastName: new FormControl(),
     dateOfBirth: new FormControl(),
@@ -25,7 +26,7 @@ export class EditContactComponent implements OnInit {
 
     this.contactsService.getContact(contactId).subscribe((contact) => {
       if (!contact) return;
-
+      this.contactForm.controls.id.setValue(contact.id);  
       this.contactForm.controls.firstName.setValue(contact.firstName);
       this.contactForm.controls.lastName.setValue(contact.lastName);
       this.contactForm.controls.dateOfBirth.setValue(contact.dateOfBirth);
