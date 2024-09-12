@@ -1,6 +1,6 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ContactsService } from '../contacts/contacts.service';
 
 @Component({
@@ -9,8 +9,9 @@ import { ContactsService } from '../contacts/contacts.service';
 })
 export class EditContactComponent implements OnInit {
   private contactsService = inject(ContactsService);
+  private router = inject(Router);
   contactForm = new FormGroup({
-    firstName: new FormControl(''),
+    firstName: new FormControl(),
     lastName: new FormControl(),
     dateOfBirth: new FormControl(),
     favoritesRanking: new FormControl(),
@@ -34,6 +35,11 @@ export class EditContactComponent implements OnInit {
 
 
   saveContact() {
+    //getRawValue() always returns a value even if a formcontrol is disabled
+    //instead of using this.formGroup.value
+    this.contactsService.saveContact(this.contactForm.value).subscribe({
+      next: () => this.router.navigate(['contacts']),
+    });
     console.log(this.contactForm.value);
     console.log(this.contactForm.controls.firstName.value);
   }
