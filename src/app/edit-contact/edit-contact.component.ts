@@ -34,9 +34,9 @@ export class EditContactComponent implements OnInit {
     }),
 
     address: this.formBuilder.nonNullable.group({
-      streetAddress: '',
-      city: '',
-      state: '',
+      streetAddress: ['', [Validators.required]],
+      city: ['', [Validators.required]],
+      state: ['', [Validators.required]],
       postalCode: '',
       addressType: '',
     }),
@@ -60,10 +60,9 @@ export class EditContactComponent implements OnInit {
     });
   }
 
-  get firstName(){
+  get firstName() {
     return this.contactForm.controls.firstName;
   }
-
 
   saveContact() {
     //getRawValue() always returns a value even if a formcontrol is disabled
