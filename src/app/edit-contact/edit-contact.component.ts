@@ -46,6 +46,14 @@ export class EditContactComponent implements OnInit {
       this.contactForm.controls.favoritesRanking.setValue(
         contact.favoritesRanking
       );
+
+      this.contactForm.controls.phone.controls.phoneNumber.setValue(contact.phone.phoneNumber);
+      this.contactForm.controls.phone.controls.phoneType.setValue(contact.phone.phoneType);
+      this.contactForm.controls.address.controls.streetAddress.setValue(contact.address.streetAddress);
+      this.contactForm.controls.address.controls.city.setValue(contact.address.city);
+      this.contactForm.controls.address.controls.state.setValue(contact.address.state);
+      this.contactForm.controls.address.controls.postalCode.setValue(contact.address.postalCode);
+      this.contactForm.controls.address.controls.addressType.setValue(contact.address.addressType);
     });
   }
 
