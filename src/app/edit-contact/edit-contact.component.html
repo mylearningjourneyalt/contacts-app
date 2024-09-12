@@ -111,7 +111,13 @@
     </section>
     <div class="buttons">
       <button class="secondary">Cancel</button>
-      <button class="primary" (click)="saveContact()">Save</button>
+      <button
+        [disabled]="contactForm.invalid"
+        class="primary"
+        (click)="saveContact()"
+      >
+        Save
+      </button>
     </div>
   </form>
 </div>
