@@ -26,3 +26,8 @@ export const phoneTypeValues = [
   {title: 'Work', value: 'work'},
   {title: 'Other', value: 'other'},
 ]
+export const addressTypeValues = [
+  {title: 'Home', value: 'home'},
+  {title: 'Work', value: 'work'},
+  {title: 'Other', value: 'other'}, 
+]

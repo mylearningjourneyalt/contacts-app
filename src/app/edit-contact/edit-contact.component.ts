@@ -3,7 +3,7 @@ import { FormControl, FormGroup, FormBuilder } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ContactsService } from '../contacts/contacts.service';
 import { last } from 'rxjs';
-import { phoneTypeValues } from '../contacts/contact.model';
+import { addressTypeValues, phoneTypeValues } from '../contacts/contact.model';
 
 
 @Component({
@@ -12,6 +12,7 @@ import { phoneTypeValues } from '../contacts/contact.model';
 })
 export class EditContactComponent implements OnInit {
   phoneTypeValues = phoneTypeValues;
+  addressTypeValues = addressTypeValues;
   private contactsService = inject(ContactsService);
   private router = inject(Router);
   private formBuilder = inject(FormBuilder);
