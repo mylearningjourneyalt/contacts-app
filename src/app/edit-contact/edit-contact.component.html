@@ -68,7 +68,14 @@
     <section>
       <nav>Address</nav>
       <div>
-        <div formGroupName="address" class="address">
+        <div
+          [class.error]="
+            contactForm.controls.address.invalid &&
+            contactForm.controls.address.dirty
+          "
+          formGroupName="address"
+          class="address"
+        >
           <div class="flex-group">
             <input formControlName="streetAddress" placeholder="Address" />
             <img src="/assets/plus-grey-blue.png" class="add" />
