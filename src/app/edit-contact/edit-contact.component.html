@@ -6,7 +6,13 @@
       <div>
         <input formControlName="firstName" placeholder="First Name" />
         <input formControlName="lastName" placeholder="Last Name" />
-        <input formControlName="dateOfBirth" placeholder="Date of Birth" />
+        <!-- Angular out of the box does not have a datvalue accesssor!!! -->
+        <input
+          type="date"
+          [value]="contactForm.controls.dateOfBirth.value | date : 'yyyy-MM-dd'"
+          formControlName="dateOfBirth"
+          placeholder="Date of Birth"
+        />
         <div>
           <span>Fav Ranking:</span>
           <input
