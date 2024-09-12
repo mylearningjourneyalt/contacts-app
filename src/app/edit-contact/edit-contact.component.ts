@@ -11,7 +11,7 @@ export class EditContactComponent implements OnInit {
   private contactsService = inject(ContactsService);
   private router = inject(Router);
   contactForm = new FormGroup({
-    id: new FormControl(),
+    id: new FormControl('', { nonNullable: true }),
     firstName: new FormControl(),
     lastName: new FormControl(),
     dateOfBirth: new FormControl(),
@@ -47,13 +47,27 @@ export class EditContactComponent implements OnInit {
         contact.favoritesRanking
       );
 
-      this.contactForm.controls.phone.controls.phoneNumber.setValue(contact.phone.phoneNumber);
-      this.contactForm.controls.phone.controls.phoneType.setValue(contact.phone.phoneType);
-      this.contactForm.controls.address.controls.streetAddress.setValue(contact.address.streetAddress);
-      this.contactForm.controls.address.controls.city.setValue(contact.address.city);
-      this.contactForm.controls.address.controls.state.setValue(contact.address.state);
-      this.contactForm.controls.address.controls.postalCode.setValue(contact.address.postalCode);
-      this.contactForm.controls.address.controls.addressType.setValue(contact.address.addressType);
+      this.contactForm.controls.phone.controls.phoneNumber.setValue(
+        contact.phone.phoneNumber
+      );
+      this.contactForm.controls.phone.controls.phoneType.setValue(
+        contact.phone.phoneType
+      );
+      this.contactForm.controls.address.controls.streetAddress.setValue(
+        contact.address.streetAddress
+      );
+      this.contactForm.controls.address.controls.city.setValue(
+        contact.address.city
+      );
+      this.contactForm.controls.address.controls.state.setValue(
+        contact.address.state
+      );
+      this.contactForm.controls.address.controls.postalCode.setValue(
+        contact.address.postalCode
+      );
+      this.contactForm.controls.address.controls.addressType.setValue(
+        contact.address.addressType
+      );
     });
   }
 
