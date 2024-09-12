@@ -41,7 +41,7 @@ export class EditContactComponent implements OnInit {
       postalCode: '',
       addressType: '',
     }),
-    notes: ['', restrictedWordsValidator],
+    notes: ['', restrictedWordsValidator(['foo', 'barr'])],
   });
 
   constructor(private route: ActivatedRoute) {}
