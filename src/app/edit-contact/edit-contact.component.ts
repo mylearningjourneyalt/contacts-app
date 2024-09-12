@@ -3,12 +3,15 @@ import { FormControl, FormGroup, FormBuilder } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ContactsService } from '../contacts/contacts.service';
 import { last } from 'rxjs';
+import { phoneTypeValues } from '../contacts/contact.model';
+
 
 @Component({
   templateUrl: './edit-contact.component.html',
   styleUrls: ['./edit-contact.component.css'],
 })
 export class EditContactComponent implements OnInit {
+  phoneTypeValues = phoneTypeValues;
   private contactsService = inject(ContactsService);
   private router = inject(Router);
   private formBuilder = inject(FormBuilder);
@@ -41,11 +44,11 @@ export class EditContactComponent implements OnInit {
 
     this.contactsService.getContact(contactId).subscribe((contact) => {
       if (!contact) return;
-      const patchValues = {
-        firstName: contact.firstName,
-        lastName: contact.lastName,
-      };
-      this.contactForm.patchValue(patchValues);
+      // const patchValues = {
+      //   firstName: contact.firstName,
+      //   lastName: contact.lastName,
+      // };
+      // this.contactForm.patchValue(patchValues);
       this.contactForm.setValue(contact);
     });
   }
