@@ -11,16 +11,17 @@ export class ContactsService {
   constructor(private http: HttpClient) {}
 
   getContact(id: string): Observable<Contact | undefined> {
-    return this.http.get<Contact>(`api/contacts/${id}`).pipe(
-      map((contact) => {
-        contact.dateOfBirth = contact.dateOfBirth.split('T')[0];
-        return contact;
-      })
-    );
-    // .pipe(map(c => {
-    //   const dob = c.dateOfBirth ? new Date(c.dateOfBirth) : null;
-    //   return { ...c, dateOfBirth: dob }
-    // }));
+    return this.http.get<Contact>(`api/contacts/${id}`)
+    // .pipe(
+    //   map((contact) => {
+    //     contact.dateOfBirth = contact.dateOfBirth.split('T')[0];
+    //     return contact;
+    //   })
+    // );
+    .pipe(map(c => {
+      const dob = c.dateOfBirth ? new Date(c.dateOfBirth) : null;
+      return { ...c, dateOfBirth: dob }
+    }));
   }
 
   getAllContacts(): Observable<Contact[]> {
