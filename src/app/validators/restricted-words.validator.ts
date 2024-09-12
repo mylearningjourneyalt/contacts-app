@@ -6,7 +6,7 @@ export function restrictedWordsValidator(words: string[]) {
     const invalidWordCheck = words
       .map((w) => (control.value.includes(w) ? w : null))
       .filter((w) => w !== null);
-    return invalidWordCheck.length > 0 ? { restrictedWords: true } : null;
+    return invalidWordCheck.length > 0 ? { restrictedWords: invalidWordCheck.join(',') } : null;
   };
 }
 

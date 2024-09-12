@@ -109,7 +109,7 @@
       <nav>Notes</nav>
       <textarea [class.error]="notes.errors?.['restrictedWords']" formControlName="notes" rows="5" placeholder="Notes"></textarea>
       <em *ngIf="notes.errors?.['restrictedWords']"
-        >Restricted Words Found</em
+        >Restricted Words Found {{notes.errors?.['restrictedWords']}}</em
       >
     </section>
     <div class="buttons">
