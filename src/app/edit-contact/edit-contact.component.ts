@@ -11,19 +11,19 @@ export class EditContactComponent implements OnInit {
   private contactsService = inject(ContactsService);
   private router = inject(Router);
   private formBuilder = inject(FormBuilder);
-  contactForm = this.formBuilder.group({
+  contactForm = this.formBuilder.nonNullable.group({
     id: '',
     firstName: '',
     lastName: '',
     dateOfBirth: <Date | null> null,
     favoritesRanking: <number | null> null,
 
-    phone: this.formBuilder.group({
+    phone: this.formBuilder.nonNullable.group({
       phoneNumber: '',
       phoneType: '',
     }),
 
-    address: this.formBuilder.group({
+    address: this.formBuilder.nonNullable.group({
       streetAddress: '',
       city: '',
       state: '',
