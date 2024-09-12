@@ -18,6 +18,7 @@ export class EditContactComponent implements OnInit {
   private formBuilder = inject(FormBuilder);
   contactForm = this.formBuilder.nonNullable.group({
     id: '',
+    personal: false,
     firstName: '',
     lastName: '',
     dateOfBirth: <Date | null>null,
