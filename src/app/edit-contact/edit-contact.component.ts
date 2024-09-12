@@ -15,8 +15,8 @@ export class EditContactComponent implements OnInit {
     id: '',
     firstName: '',
     lastName: '',
-    dateOfBirth: <Date | null> null,
-    favoritesRanking: <number | null> null,
+    dateOfBirth: null,
+    favoritesRanking: null,
 
     phone: this.formBuilder.group({
       phoneNumber: '',
