@@ -1,5 +1,5 @@
 import { Component, inject, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, FormBuilder } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ContactsService } from '../contacts/contacts.service';
 
@@ -10,24 +10,25 @@ import { ContactsService } from '../contacts/contacts.service';
 export class EditContactComponent implements OnInit {
   private contactsService = inject(ContactsService);
   private router = inject(Router);
-  contactForm = new FormGroup({
-    id: new FormControl('', { nonNullable: true }),
-    firstName: new FormControl(),
-    lastName: new FormControl(),
-    dateOfBirth: new FormControl(),
-    favoritesRanking: new FormControl(),
+  private formBuilder = inject(FormBuilder);
+  contactForm = this.formBuilder.group({
+    id: '',
+    firstName: '',
+    lastName: '',
+    dateOfBirth: <Date | null> null,
+    favoritesRanking: <number | null> null,
 
-    phone: new FormGroup({
-      phoneNumber: new FormControl(),
-      phoneType: new FormControl(),
+    phone: this.formBuilder.group({
+      phoneNumber: '',
+      phoneType: '',
     }),
 
-    address: new FormGroup({
-      streetAddress: new FormControl(),
-      city: new FormControl(),
-      state: new FormControl(),
-      postalCode: new FormControl(),
-      addressType: new FormControl(),
+    address: this.formBuilder.group({
+      streetAddress: '',
+      city: '',
+      state: '',
+      postalCode: '',
+      addressType: '',
     }),
   });
 
