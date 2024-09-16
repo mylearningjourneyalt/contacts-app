@@ -23,6 +23,7 @@ export class EditContactComponent implements OnInit {
   private formBuilder = inject(FormBuilder);
   contactForm = this.formBuilder.nonNullable.group({
     id: '',
+    icon: '',
     personal: false,
     firstName: ['', [Validators.required, Validators.minLength(3)]],
     lastName: '',
