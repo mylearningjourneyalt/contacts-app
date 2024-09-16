@@ -19,7 +19,6 @@
         <!-- Angular out of the box does not have a datvalue accesssor!!! -->
         <input
           type="date"
-          [value]="contactForm.controls.dateOfBirth.value | date : 'yyyy-MM-dd'"
           formControlName="dateOfBirth"
           placeholder="Date of Birth"
         />
